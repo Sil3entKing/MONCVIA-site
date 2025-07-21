@@ -1,66 +1,103 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
-  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f3f6fb;
   margin: 0;
+  padding: 0;
 }
 
-.container {
-  max-width: 700px;
-  margin: auto;
+header {
   background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+.btn-dark {
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-blue {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+main {
+  padding: 40px;
 }
 
 h1 {
-  color: #333;
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 25px;
+  font-size: 2rem;
+  color: #111827;
 }
 
-input,
-textarea,
-select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 14px;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
 }
 
-button {
-  background-color: #dc3545; /* rouge */
-  color: white;
-  border: none;
-  padding: 12px;
-  width: 100%;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #c82333; /* rouge foncé */
-}
-
-select {
-  background-color: #f5f5f5;
-}
-
-#cv-html,
-#lettreResultat {
-  margin-top: 20px;
+.card {
+  background: white;
   padding: 20px;
-  background: #f3f3f3;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.card input,
+.card textarea {
+  display: block;
+  margin-bottom: 12px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.preview-box {
+  background: #f3f4f6;
+  min-height: 200px;
+  border-radius: 8px;
+  padding: 15px;
+  overflow-y: auto;
   white-space: pre-wrap;
+  font-size: 0.95rem;
+  color: #111827;
 }
