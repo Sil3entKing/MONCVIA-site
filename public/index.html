@@ -2,59 +2,74 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MonCVIA – Générateur IA</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>MonCVIA – Générateur de CV</h1>
+  <header>
+    <div class="logo">📄 <strong>MonCVIA</strong></div>
+    <nav>
+      <a href="#">Connexion</a>
+      <button class="btn-dark">S’inscrire</button>
+    </nav>
+  </header>
 
-    <form id="cvForm">
-      <input type="text" id="nom" placeholder="Nom complet" required><br>
-      <input type="text" id="poste" placeholder="Poste recherché" required><br>
-      <textarea id="experience" placeholder="Expérience professionnelle"></textarea><br>
-      <textarea id="competences" placeholder="Compétences"></textarea><br>
-      <textarea id="formation" placeholder="Formation"></textarea><br>
-      <button type="submit">Générer le CV</button>
-    </form>
+  <main>
+    <h1>Générateur de CV</h1>
 
-    <div id="cv-html" style="margin-top: 20px;"></div>
+    <div class="grid-container">
+      <!-- Formulaire CV -->
+      <section class="card">
+        <h2>Générer votre CV</h2>
+        <form id="cvForm">
+          <input type="text" id="nom" placeholder="Nom complet" required />
+          <input type="text" id="poste" placeholder="Poste recherché" required />
+          <textarea id="experience" placeholder="Expérience professionnelle"></textarea>
+          <textarea id="competences" placeholder="Compétences"></textarea>
+          <textarea id="formation" placeholder="Formation"></textarea>
+          <button class="btn-dark" type="submit">Créer un CV</button>
+        </form>
+        <select id="langueCV">
+          <option value="">🌐 Traduire le CV</option>
+          <option value="en">Anglais</option>
+        </select>
+        <button class="btn-blue" id="traduireCV">Traduire le CV</button>
+        <button class="btn-blue" id="download-pdf">📄 Télécharger PDF</button>
+      </section>
 
-    <select id="langueCV">
-      <option value="">🌐 Traduire le CV</option>
-      <option value="fr">Français</option>
-      <option value="en">Anglais</option>
-      <option value="es">Espagnol</option>
-      <option value="de">Allemand</option>
-    </select>
-    <button id="traduireCV">Traduire le CV</button>
+      <!-- Aperçu CV -->
+      <section class="card preview">
+        <h2>Aperçu du CV</h2>
+        <div class="preview-box output-box" id="cv-html">Votre CV généré apparaîtra ici</div>
+      </section>
 
-    <button id="download-pdf">📄 Télécharger le CV en PDF</button>
+      <!-- Lettre de motivation -->
+      <section class="card">
+        <h2>Lettre de motivation</h2>
+        <form id="lettreForm">
+          <input type="text" id="nomLettre" placeholder="Nom complet" required />
+          <input type="text" id="posteLettre" placeholder="Poste visé" required />
+          <textarea id="motivation" placeholder="Pourquoi ce poste ?"></textarea>
+          <button class="btn-dark" type="submit">Créer une lettre</button>
+        </form>
+        <select id="langueLettre">
+          <option value="">🌐 Traduire la lettre</option>
+          <option value="en">Anglais</option>
+        </select>
+        <button class="btn-blue" id="traduireLettre">Traduire la lettre</button>
+      </section>
 
-    <hr>
-
-    <h1>Générateur de Lettre de Motivation</h1>
-
-    <form id="lettreForm">
-      <input type="text" id="nomLettre" placeholder="Nom complet" required><br>
-      <input type="text" id="posteLettre" placeholder="Poste visé" required><br>
-      <textarea id="motivation" placeholder="Pourquoi ce poste ?"></textarea><br>
-      <button type="submit">Générer la lettre</button>
-    </form>
-
-    <div id="lettreResultat" style="margin-top: 20px;"></div>
-
-    <select id="langueLettre">
-      <option value="">🌐 Traduire la lettre</option>
-      <option value="fr">Français</option>
-      <option value="en">Anglais</option>
-      <option value="es">Espagnol</option>
-      <option value="de">Allemand</option>
-    </select>
-    <button id="traduireLettre">Traduire la lettre</button>
-  </div>
+      <!-- Aperçu lettre -->
+      <section class="card preview">
+        <h2>Aperçu de la lettre</h2>
+        <div class="preview-box output-box" id="lettreResultat">Votre lettre générée apparaîtra ici</div>
+      </section>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
 </html>
+
