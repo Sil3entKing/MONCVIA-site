@@ -41,8 +41,7 @@ Formation : ${formation}
   // Traduction du CV
   document.getElementById("traduireCV").addEventListener("click", async () => {
     const langue = document.getElementById("langueCV").value;
-    const contenu = document.getElementById("cv-html").innerText;
-
+    const contenu = outputCV.innerText;
     if (!contenu || !langue) return alert("Choisis une langue et génère un CV d'abord.");
 
     try {
@@ -56,8 +55,7 @@ Formation : ${formation}
       });
 
       const data = await res.json();
-      document.getElementById("cv-html").innerHTML =
-        data.response?.replace(/\n/g, "<br>") || "❌ Erreur de traduction.";
+      outputCV.innerHTML = data.response?.replace(/\n/g, "<br>") || "❌ Erreur de traduction.";
     } catch (err) {
       alert("Erreur de traduction : " + err.message);
     }
@@ -65,7 +63,7 @@ Formation : ${formation}
 
   // Télécharger le CV en PDF
   document.getElementById("download-pdf").addEventListener("click", () => {
-    const contenu = document.getElementById("cv-html");
+    const contenu = outputCV;
     if (!contenu || !contenu.innerHTML.trim()) {
       alert("Aucun CV à télécharger !");
       return;
@@ -107,8 +105,7 @@ Motivation : ${motivation}
   // Traduction de la lettre
   document.getElementById("traduireLettre").addEventListener("click", async () => {
     const langue = document.getElementById("langueLettre").value;
-    const contenu = document.getElementById("lettreResultat").innerText;
-
+    const contenu = outputLettre.innerText;
     if (!contenu || !langue) return alert("Choisis une langue et génère une lettre d'abord.");
 
     try {
@@ -122,8 +119,7 @@ Motivation : ${motivation}
       });
 
       const data = await res.json();
-      document.getElementById("lettreResultat").innerHTML =
-        data.response?.replace(/\n/g, "<br>") || "❌ Erreur de traduction.";
+      outputLettre.innerHTML = data.response?.replace(/\n/g, "<br>") || "❌ Erreur de traduction.";
     } catch (err) {
       alert("Erreur de traduction : " + err.message);
     }
