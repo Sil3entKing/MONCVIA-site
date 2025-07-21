@@ -4,16 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MonCVIA – Générateur IA</title>
+
+  <!-- ✅ Google AdSense global script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4938932196877336"
+    crossorigin="anonymous"></script>
+
+  <!-- ✅ Favicon (si tu as favicon.png dans ton dossier) -->
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
   <header>
-    <div class="logo">
-      <strong>MonCVIA</strong>
-    </div>
+    <div class="logo"><strong>MonCVIA</strong></div>
   </header>
+
+  <!-- 🔼 PUB EN HAUT -->
+  <div class="ads-top">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-4938932196877336"
+      data-ad-slot="6370673439"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
   <main>
     <h1>Générateur de CV</h1>
@@ -36,13 +52,12 @@
         </select>
         <button class="btn-blue" id="traduireCV">Traduire le CV</button>
       </section>
-
-      <!-- Aperçu CV -->
       <section class="card preview">
         <h2>Aperçu du CV</h2>
         <div class="preview-box output-box" id="cv-html">Votre CV généré apparaîtra ici</div>
+        <button class="btn-light" id="export-word-cv">📄 Exporter en Word</button>
       </section>
-
+      <!-- Aperçu lettre -->
       <!-- Lettre de motivation -->
       <section class="card">
         <h2>Lettre de motivation</h2>
@@ -58,14 +73,37 @@
         </select>
         <button class="btn-blue" id="traduireLettre">Traduire la lettre</button>
       </section>
-
-      <!-- Aperçu lettre -->
       <section class="card preview">
         <h2>Aperçu de la lettre</h2>
         <div class="preview-box output-box" id="lettreResultat">Votre lettre générée apparaîtra ici</div>
+        <button class="btn-light" id="export-word-lettre">📄 Exporter en Word</button>
+      </section>
+      <!-- Aperçu lettre -->
+
+      <!-- 🔽 PUB MILIEU -->
+      <section class="card">
+        <h2>Publicité</h2>
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-4938932196877336"
+          data-ad-slot="3537638292
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </section>
     </div>
   </main>
+
+  <!-- 🔻 PUB BAS DE PAGE -->
+  <div class="ads-bottom" style="padding: 30px;">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-4938932196877336"
+      data-ad-slot="6179101744
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
   <script src="script.js"></script>
 </body>
