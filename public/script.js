@@ -61,16 +61,6 @@ Formation : ${formation}
     }
   });
 
-  // Télécharger le CV en PDF
-  document.getElementById("download-pdf").addEventListener("click", () => {
-    const contenu = outputCV;
-    if (!contenu || !contenu.innerHTML.trim()) {
-      alert("Aucun CV à télécharger !");
-      return;
-    }
-    html2pdf().from(contenu).save("MonCVIA_CV.pdf");
-  });
-
   // Générateur de lettre de motivation
   document.getElementById("lettreForm").addEventListener("submit", async (e) => {
     e.preventDefault();
