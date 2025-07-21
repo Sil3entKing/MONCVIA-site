@@ -1,23 +1,25 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #f3f6fb;
+  background: #1e1e1e; /* fond sombre */
+  color: #f0f0f0;
   margin: 0;
   padding: 0;
 }
 
 header {
-  background: white;
+  background: #2c2c2c;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .logo {
-  font-size: 1.2rem;
   display: flex;
   align-items: center;
+  gap: 10px;
+  color: #ffffff;
 }
 
 nav {
@@ -27,12 +29,12 @@ nav {
 }
 
 nav a {
-  color: #333;
+  color: #ffffff;
   text-decoration: none;
 }
 
 .btn-dark {
-  background: #1f2937;
+  background: #111827;
   color: white;
   border: none;
   padding: 10px 18px;
@@ -41,14 +43,19 @@ nav a {
 }
 
 .btn-blue {
-  background: #2563eb;
+  background: linear-gradient(90deg, #2563eb, #1e40af);
   color: white;
   border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
-  width: 100%;
+  transition: background 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-blue:hover {
+  background: linear-gradient(90deg, #1d4ed8, #1e3a8a);
 }
 
 main {
@@ -57,7 +64,7 @@ main {
 
 h1 {
   font-size: 2rem;
-  color: #111827;
+  color: #ffffff;
 }
 
 .grid-container {
@@ -68,36 +75,58 @@ h1 {
 }
 
 .card {
-  background: white;
+  background: #2b2b2b;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .card h2 {
   font-size: 1.1rem;
   margin-bottom: 15px;
+  color: #ffffff;
 }
 
 .card input,
-.card textarea {
+.card textarea,
+.card select {
   display: block;
   margin-bottom: 12px;
   padding: 10px;
   width: 100%;
-  border: 1px solid #d1d5db;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
   border-radius: 6px;
   font-family: inherit;
   resize: vertical;
 }
 
 .preview-box {
-  background: #f3f4f6;
+  background: #1c1c1c;
   min-height: 200px;
   border-radius: 8px;
   padding: 15px;
   overflow-y: auto;
   white-space: pre-wrap;
   font-size: 0.95rem;
-  color: #111827;
+  color: #f0f0f0;
+}
+
+.btn-light {
+  background-color: #333;
+  color: #f0f0f0;
+  border: 1px solid #555;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.btn-light:hover {
+  background-color: #444;
 }
