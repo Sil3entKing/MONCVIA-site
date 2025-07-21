@@ -3,7 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const outputLettre = document.getElementById("lettreResultat");
   const API_URL = "https://moncvia-backend.onrender.com/api";
 
-  // Générateur de CV
+  // Fonction pour convertir du Markdown en HTML simple
+  function markdownToHTML(markdown) {
+    return markdown
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Gras
+      .replace(/\*(.*?)\*/g, "<em>$1</em>")             // Italique
+      .replace(/^- (.*)$/gm, "<li>$1</li>")             // Liste
+      .replace(/(<li>.*<\/li>)/gs, "<ul>$1</ul>")       // Liste complète
+      .replace(/\n{2,}/g, "<br><br>");                  // Paragraphes
+  }
+
+  // 🔹 Générer le CV
   document.getElementById("cvForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const nom = document.getElementById("nom").value;
@@ -13,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formation = document.getElementById("formation").value;
 
     const prompt = `
-Crée un CV professionnel clair avec ces infos :
+Crée un CV professionnel avec ces informations :
 Nom : ${nom}
 Poste : ${poste}
 Expérience : ${experience}
@@ -26,23 +36,23 @@ Formation : ${formation}
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: prompt,
+          prompt,
           role: "Tu es un assistant qui crée des CV professionnels."
         })
       });
 
       const data = await res.json();
-      outputCV.innerHTML = data.response?.replace(/\n/g, "<br>") || "❌ Aucune réponse de l'IA.";
+      outputCV.innerHTML = markdownToHTML(data.response || "❌ Aucune réponse.");
     } catch (err) {
       outputCV.innerHTML = "❌ Erreur IA : " + err.message;
     }
   });
 
-  // Traduction du CV
+  // 🔹 Traduire le CV
   document.getElementById("traduireCV").addEventListener("click", async () => {
     const langue = document.getElementById("langueCV").value;
     const contenu = outputCV.innerText;
-    if (!contenu || !langue) return alert("Choisis une langue et génère un CV d'abord.");
+    if (!contenu || !langue) return alert("Génère un CV et choisis une langue.");
 
     try {
       const res = await fetch(API_URL, {
@@ -55,13 +65,13 @@ Formation : ${formation}
       });
 
       const data = await res.json();
-      outputCV.innerHTML = data.response?.replace(/\n/g, "<br>") || "❌ Erreur de traduction.";
+      outputCV.innerHTML = markdownToHTML(data.response || "❌ Erreur de traduction.");
     } catch (err) {
       alert("Erreur de traduction : " + err.message);
     }
   });
 
-  // Générateur de lettre de motivation
+  // 🔹 Générer la lettre
   document.getElementById("lettreForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const nom = document.getElementById("nomLettre").value;
@@ -69,7 +79,7 @@ Formation : ${formation}
     const motivation = document.getElementById("motivation").value;
 
     const prompt = `
-Rédige une lettre de motivation convaincante pour :
+Rédige une lettre de motivation :
 Nom : ${nom}
 Poste : ${poste}
 Motivation : ${motivation}
@@ -80,23 +90,23 @@ Motivation : ${motivation}
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: prompt,
+          prompt,
           role: "Tu es un assistant qui rédige des lettres de motivation professionnelles."
         })
       });
 
       const data = await res.json();
-      outputLettre.innerHTML = data.response?.replace(/\n/g, "<br>") || "❌ Aucune réponse IA.";
+      outputLettre.innerHTML = markdownToHTML(data.response || "❌ Aucune réponse.");
     } catch (err) {
-      outputLettre.innerHTML = "❌ Erreur : " + err.message;
+      outputLettre.innerHTML = "❌ Erreur IA : " + err.message;
     }
   });
 
-  // Traduction de la lettre
+  // 🔹 Traduire la lettre
   document.getElementById("traduireLettre").addEventListener("click", async () => {
     const langue = document.getElementById("langueLettre").value;
     const contenu = outputLettre.innerText;
-    if (!contenu || !langue) return alert("Choisis une langue et génère une lettre d'abord.");
+    if (!contenu || !langue) return alert("Génère une lettre et choisis une langue.");
 
     try {
       const res = await fetch(API_URL, {
@@ -109,42 +119,44 @@ Motivation : ${motivation}
       });
 
       const data = await res.json();
-      outputLettre.innerHTML = data.response?.replace(/\n/g, "<br>") || "❌ Erreur de traduction.";
+      outputLettre.innerHTML = markdownToHTML(data.response || "❌ Erreur de traduction.");
     } catch (err) {
       alert("Erreur de traduction : " + err.message);
     }
   });
-})// Exporter le CV en .doc
-document.getElementById("export-word-cv").addEventListener("click", () => {
-  const contenu = document.getElementById("cv-html").innerHTML;
-  if (!contenu.trim()) return alert("Aucun CV à exporter !");
-  exporterEnWord(contenu, "MonCVIA_CV");
+
+  // 🔹 Exporter en Word (CV)
+  document.getElementById("export-word-cv").addEventListener("click", () => {
+    const contenu = outputCV.innerHTML;
+    if (!contenu.trim()) return alert("Aucun CV à exporter !");
+    exporterEnWord(contenu, "MonCVIA_CV");
+  });
+
+  // 🔹 Exporter en Word (Lettre)
+  document.getElementById("export-word-lettre").addEventListener("click", () => {
+    const contenu = outputLettre.innerHTML;
+    if (!contenu.trim()) return alert("Aucune lettre à exporter !");
+    exporterEnWord(contenu, "MonCVIA_Lettre");
+  });
+
+  // 🔹 Fonction générique
+  function exporterEnWord(htmlContent, filename) {
+    const header = `
+      <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+            xmlns:w='urn:schemas-microsoft-com:office:word' 
+            xmlns='http://www.w3.org/TR/REC-html40'>
+      <head><meta charset='utf-8'></head><body>`;
+    const footer = "</body></html>";
+    const sourceHTML = header + htmlContent + footer;
+
+    const sourceBlob = new Blob([sourceHTML], { type: 'application/msword' });
+    const url = URL.createObjectURL(sourceBlob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename + ".doc";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 });
-
-// Exporter la lettre en .doc
-document.getElementById("export-word-lettre").addEventListener("click", () => {
-  const contenu = document.getElementById("lettreResultat").innerHTML;
-  if (!contenu.trim()) return alert("Aucune lettre à exporter !");
-  exporterEnWord(contenu, "MonCVIA_Lettre");
-});
-
-// Fonction utilitaire Word
-function exporterEnWord(htmlContent, filename) {
-  const header = `
-    <html xmlns:o='urn:schemas-microsoft-com:office:office' 
-          xmlns:w='urn:schemas-microsoft-com:office:word' 
-          xmlns='http://www.w3.org/TR/REC-html40'>
-    <head><meta charset='utf-8'></head><body>`;
-  const footer = "</body></html>";
-  const sourceHTML = header + htmlContent + footer;
-
-  const sourceBlob = new Blob([sourceHTML], { type: 'application/msword' });
-  const url = URL.createObjectURL(sourceBlob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename + ".doc";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
