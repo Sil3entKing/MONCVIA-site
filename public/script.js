@@ -114,4 +114,37 @@ Motivation : ${motivation}
       alert("Erreur de traduction : " + err.message);
     }
   });
+})// Exporter le CV en .doc
+document.getElementById("export-word-cv").addEventListener("click", () => {
+  const contenu = document.getElementById("cv-html").innerHTML;
+  if (!contenu.trim()) return alert("Aucun CV à exporter !");
+  exporterEnWord(contenu, "MonCVIA_CV");
 });
+
+// Exporter la lettre en .doc
+document.getElementById("export-word-lettre").addEventListener("click", () => {
+  const contenu = document.getElementById("lettreResultat").innerHTML;
+  if (!contenu.trim()) return alert("Aucune lettre à exporter !");
+  exporterEnWord(contenu, "MonCVIA_Lettre");
+});
+
+// Fonction utilitaire Word
+function exporterEnWord(htmlContent, filename) {
+  const header = `
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+          xmlns:w='urn:schemas-microsoft-com:office:word' 
+          xmlns='http://www.w3.org/TR/REC-html40'>
+    <head><meta charset='utf-8'></head><body>`;
+  const footer = "</body></html>";
+  const sourceHTML = header + htmlContent + footer;
+
+  const sourceBlob = new Blob([sourceHTML], { type: 'application/msword' });
+  const url = URL.createObjectURL(sourceBlob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename + ".doc";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
