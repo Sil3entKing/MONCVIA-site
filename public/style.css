@@ -277,4 +277,49 @@ h1 {
 .cv-cartouche .section p {
   font-size: 0.95rem;
   color: #ccc;
+}/* S'assurer que les labels sont au-dessus des champs */
+.card label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+/* Ajuster les inputs/textarea pour qu'ils ne débordent pas */
+.card input,
+.card textarea,
+.card select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+/* Supprimer tout texte par défaut dans les champs */
+.card input::placeholder,
+.card textarea::placeholder {
+  color: #888;
+}
+
+/* S'assurer que le bouton ne déborde pas */
+.card button,
+.card select {
+  max-width: 100%;
+}
+
+/* Réduction du padding en bas des champs pour éviter les débordements */
+.card {
+  padding-bottom: 20px;
+}
+
+/* Harmoniser le rendu du label + champ */
+.card .form-group {
+  margin-bottom: 18px;
 }
