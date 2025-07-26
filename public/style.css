@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #1e1e1e; /* fond sombre */
+  background: #1e1e1e;
   color: #f0f0f0;
   margin: 0;
   padding: 0;
@@ -87,11 +87,17 @@ h1 {
   color: #ffffff;
 }
 
+.card label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  display: block;
+}
+
 .card input,
 .card textarea,
 .card select {
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   padding: 10px;
   width: 100%;
   background-color: #1e1e1e;
@@ -129,4 +135,146 @@ h1 {
 
 .btn-light:hover {
   background-color: #444;
+}
+
+/* Cartouche CV */
+.cv-cartouche {
+  background-color: #004080;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cv-cartouche h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cv-cartouche h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.cv-cartouche p {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.cartouche-contact p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 2px 0;
+}
+
+.cv-sections {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.cv-sections h3 {
+  color: #00bfff;
+  margin-bottom: 5px;
+}
+
+.cv-sections p {
+  margin-left: 10px;
+  color: #ddd;
+}.card textarea {
+  min-height: 80px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.card input,
+.card textarea,
+.card select {
+  box-sizing: border-box;
+}/* Disposition responsive 2 lignes */
+@media (min-width: 900px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 25px;
+  }
+
+  .grid-container .card:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .grid-container .card:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .grid-container .card:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .grid-container .card:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+/* Supprimer le fond bleu du CV généré */
+.cv-cartouche {
+  background: #2b2b2b;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  color: #f0f0f0;
+  text-align: left;
+}
+
+/* Espacement vertical plus petit entre les blocs */
+.grid-container {
+  row-gap: 20px;
+  column-gap: 20px;
+}
+
+/* Centrer les textes dans le CV */
+.cv-cartouche .cartouche-nom {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cv-cartouche .cartouche-poste {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.cv-cartouche .cartouche-contact {
+  margin-bottom: 15px;
+}
+
+.cv-cartouche .cartouche-contact p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.cv-cartouche .section {
+  margin-bottom: 15px;
+}
+
+.cv-cartouche .section h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.cv-cartouche .section p {
+  font-size: 0.95rem;
+  color: #ccc;
 }
