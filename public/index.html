@@ -6,15 +6,13 @@
   <title>MonCVIA – Générateur IA</title>
 
   <!-- ✅ Google AdSense global script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4938932196877336"
-    crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4938932196877336" crossorigin="anonymous"></script>
 
-  <!-- ✅ Favicon (si tu as favicon.png dans ton dossier) -->
+  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <body>
   <header>
     <div class="logo"><strong>MonCVIA</strong></div>
@@ -35,50 +33,79 @@
     <h1>Générateur de CV</h1>
 
     <div class="grid-container">
-      <!-- Formulaire CV -->
+      <!-- Formulaire de génération -->
       <section class="card">
-        <h2>Générer votre CV</h2>
         <form id="cvForm">
-          <input type="text" id="nom" placeholder="Nom complet" required />
-          <input type="text" id="poste" placeholder="Poste recherché" required />
-          <textarea id="experience" placeholder="Expérience professionnelle"></textarea>
-          <textarea id="competences" placeholder="Compétences"></textarea>
-          <textarea id="formation" placeholder="Formation"></textarea>
+          <label for="nom">Nom complet</label>
+          <input type="text" id="nom" />
+
+          <label for="poste">Poste recherché</label>
+          <input type="text" id="poste" />
+
+          <label for="adresse">Adresse</label>
+          <input type="text" id="adresse" />
+
+          <label for="telephone">Téléphone</label>
+          <input type="text" id="telephone" />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" />
+
+          <label for="experience">Expérience professionnelle</label>
+          <textarea id="experience"></textarea>
+
+          <label for="competences">Compétences</label>
+          <textarea id="competences"></textarea>
+
+          <label for="formation">Formation</label>
+          <textarea id="formation"></textarea>
+
           <button class="btn-dark" type="submit">Créer un CV</button>
         </form>
+
         <select id="langueCV">
           <option value="">🌐 Traduire le CV</option>
           <option value="en">Anglais</option>
         </select>
         <button class="btn-blue" id="traduireCV">Traduire le CV</button>
       </section>
+
+      <!-- Aperçu CV -->
       <section class="card preview">
         <h2>Aperçu du CV</h2>
         <div class="preview-box output-box" id="cv-html">Votre CV généré apparaîtra ici</div>
         <button class="btn-light" id="export-word-cv">📄 Exporter en Word</button>
       </section>
-      <!-- Aperçu lettre -->
-      <!-- Lettre de motivation -->
+
+      <!-- Générateur lettre -->
       <section class="card">
         <h2>Lettre de motivation</h2>
         <form id="lettreForm">
-          <input type="text" id="nomLettre" placeholder="Nom complet" required />
-          <input type="text" id="posteLettre" placeholder="Poste visé" required />
-          <textarea id="motivation" placeholder="Pourquoi ce poste ?"></textarea>
+          <label for="nomLettre">Nom complet</label>
+          <input type="text" id="nomLettre" required />
+
+          <label for="posteLettre">Poste visé</label>
+          <input type="text" id="posteLettre" required />
+
+          <label for="motivation">Pourquoi ce poste ?</label>
+          <textarea id="motivation"></textarea>
+
           <button class="btn-dark" type="submit">Créer une lettre</button>
         </form>
+
         <select id="langueLettre">
           <option value="">🌐 Traduire la lettre</option>
           <option value="en">Anglais</option>
         </select>
         <button class="btn-blue" id="traduireLettre">Traduire la lettre</button>
       </section>
+
+      <!-- Aperçu lettre -->
       <section class="card preview">
         <h2>Aperçu de la lettre</h2>
         <div class="preview-box output-box" id="lettreResultat">Votre lettre générée apparaîtra ici</div>
         <button class="btn-light" id="export-word-lettre">📄 Exporter en Word</button>
       </section>
-      <!-- Aperçu lettre -->
 
       <!-- 🔽 PUB MILIEU -->
       <section class="card">
@@ -86,7 +113,7 @@
         <ins class="adsbygoogle"
           style="display:block"
           data-ad-client="ca-pub-4938932196877336"
-          data-ad-slot="3537638292
+          data-ad-slot="3537638292"
           data-ad-format="auto"
           data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -99,7 +126,7 @@
     <ins class="adsbygoogle"
       style="display:block"
       data-ad-client="ca-pub-4938932196877336"
-      data-ad-slot="6179101744
+      data-ad-slot="6179101744"
       data-ad-format="auto"
       data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
